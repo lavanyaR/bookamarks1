@@ -1,5 +1,16 @@
 <div align="center" style="color:green"><i style="font-size:30px">Register With Us to Share Your BookMarks With All</i></div>
 <div align="center"><%= form_for(:user,:url => {:controller => "users", :action => "create"}) do |f|%>
+ <% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> title cannot be blank we need to enter bookmarks:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+ <% end %>
   <%= f.label :name %>
   <%= f.text_field :name %> </br>
   <%= f.label :email %>
@@ -9,4 +20,5 @@
   <%= f.label :confirmpassword %>
   <%= password_field_tag :confirmpassword %></br>
   <%= f.submit %> </br>
+
 <% end %><div>

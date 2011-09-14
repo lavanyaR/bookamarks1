@@ -1,2 +1,13 @@
 <div align ="center" style="color:red"><i style="font-size:30px">Thank you for Registration With Us </i><div>
-<i align="right"><%= link_to "enjoy by  sharing your bookmarks", home_index_path %><i>s
+<i align="right"><%= link_to "enjoy by  sharing your bookmarks", home_index_path %><i></br>
+</br></br>
+<div align="right"><i>Sign in  Now<i></div>
+<div align="right" style="color:blue"><%= form_for(:user,:url => {:controller => "login", :action => "create"}) do |f|%>
+ 
+<%= f.label :email %>
+  <%= f.text_field :email, :value => "" %></br>
+<%= f.label :Password  %>
+  <%= f.password_field :password, :value => "" %></br>
+  <%= f.submit "Login" %><br /></br />
+<% end %></div>
+

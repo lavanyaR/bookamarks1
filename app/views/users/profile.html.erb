@@ -1,0 +1,10 @@
+<h2><i>My Profile</i></h2>
+<b>Name :</b>
+<%= @user.name %></br>
+<b>Email :</b>
+<%= @user.email %></br>
+<i>Total Bookmarks : </i>
+<%= link_to @user.books.count,books_path %></br>
+
+<%= link_to "edit", edit_user_path(@user.id) %>
+<%= link_to "Back",users_path %>

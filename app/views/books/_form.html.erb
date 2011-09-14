@@ -1,10 +1,21 @@
-<div align="center"><%= form_for(@book) do |f| %>
-<%= f.label :Title %>
+<div align="left"><%= form_for(@book) do |f| %>
+<% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@book.errors.count, "error") %> title cannot be blank we need to enter bookmarks:</h2>
+
+    <ul>
+    <% @book.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+ <% end %>
+<%= f.label :Title %></br>
 <%= f.text_field :title %></br>
-<%= f.label :Discription %>
+<%= f.label :Discription %></br>
 <%= f.text_field :discription %></br>
-<%= f.label :Url %>
-<%= f.text_field :url %></br>
+<%= f.label :Url %></br>
+<%= f.text_field :url %></br></br>
 <%= f.submit "submit" %>
 <%end %>
 </div>

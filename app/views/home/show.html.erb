@@ -2,9 +2,10 @@
 <%= @user.name %><br />
 <b>Email : </b>
 <%= @user.email %><br />
-
-<b>Book:</b>
 <% @user.books.each do |b| %>
-<%= link_to b.title,b.url %>
+<span><b>Book:</b></span>
+<%= link_to b.title,b.url %></br>
+<span><b>Discription:</b></span>
+<%=  b.discription %></br>
 <% end %></br></br>
 <%= link_to 'Back', home_index_path %>

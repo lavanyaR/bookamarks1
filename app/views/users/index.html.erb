@@ -1,12 +1,19 @@
-<h1> Welcome To Your Profile</h1><div align="right"><%= link_to "logout",logout_login_index_path %></div></br></br></br>
+<div style="color:green"><h1> HI <i><%= @user.name %></i></h1></div>
+<div align="center"> <%= @user.email %></div>
+<div align="right" >
+<span ><%= link_to "My Profile", profile_users_path %></span>
+<span ><%= link_to "logout",logout_login_index_path %></span>
+</div></br></br></br>
 <div id='body'>
   <div id='body-left' align="left">
-
-
-<%= @user.name %>
+<b>Name :</b>
+<%= @user.name %></br>
+<i>Total Bookmarks : </i>
+<%= link_to @user.books.count,books_path %></br>
 
 <%= link_to "edit", edit_user_path(@user.id) %>
-<%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %></br>
+<%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %></br></br>
+<div style="color:maroon"><i style="font-size:20px"><u>My Bookmarks</u></i></div></br>
 <% @books.each do |books| %>
   <tr>
     <td><span>Title :</span></td>
@@ -17,17 +24,18 @@
 <tr>
     <td><%= link_to 'Show', books %></td>
     <td><%= link_to 'Edit', edit_book_path(books) %></td>
-    <td><%= link_to 'Destroy', books, :confirm => 'Are you sure?', :method => :delete %></td></tr></br>
+    <td><%= link_to 'Destroy', books, :confirm => 'Are you sure?', :method => :delete %></td></tr></br></br></br>
   </tr>
 <% end %>
 </table></br>
+<%= will_paginate @books %>
 
 
-<%= link_to 'New book', new_book_path %>
+
 </div>
 <div id='body-right' align="right">
   <div style="color:lightblue"><i style="font-size:20px">Add A New Book Mark</i></div></br></br>
-   <div ><%= form_for(:book,:url => {:controller => "books", :action => "create"}) do |f| %>
+   <div ><%= form_for(:book,:url => {:controller => "books", :action => "create"}) do |f| %>   
    <%= f.label :Title %>
   <%= f.text_field :title %></br>
   <%= f.label :Discription %>

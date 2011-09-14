@@ -6,6 +6,7 @@ Bookmarks1::Application.routes.draw do
   get "register", :on => :collection
   get "thanq", :on => :collection
   get "delete",:on => :collection
+  get "profile",:on => :collection
   end
 
   resources :login do

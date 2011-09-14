@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   def index
      @user =User.find(session[:user])
-     @books = Book.where(:user_id => @user.id).order("created_at DESC")
+     @books = Book.where(:user_id => @user.id).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+     
+     
   end
 
   def show
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
         respond_to do |format|
          if @user.save
             format.html { redirect_to thanq_users_path }
+            
         else
             format.html{render :action => "register"}
       
@@ -39,21 +42,25 @@ def update
    puts "rrrrrrrrrrrrrrr"
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(users_path, :notice => 'Update was successfully updated.') }
+        format.html { redirect_to(users_path, :notice => 'Your changes are succesfully updated.') }
      else
         format.html { render :action => "edit" }
     end
   end
   end
 def destroy
-   @user = User.find(params[:id])
-    @user.destroy
- redirect_to delete_users_path
+    puts "hhh"
+   @user = User.find(params[:id])   
+   @user.destroy
+   redirect_to delete_users_path
   end
  def register
-  
+ @user=User.new 
  end
  def delete
+ end
+ def profile
+  @user =User.find(session[:user])
  end
 
 end

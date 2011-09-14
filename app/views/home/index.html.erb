@@ -12,9 +12,10 @@
   <i style="font-size:30px">Latest BookMarks</i></br>
 <% @books.each do |books| %>
 <span>Title :</span><%= link_to books.title,books.url , :target=>:_blank %><br>
+<span>Discription :</span><%=  books.discription %><br>
 
 <% end %>
-<%= will_paginate @bookmarks %>
+<%= will_paginate @books %>
   </div>
   <div id='body-right' align="right">
 <i style="font-size:30px">Users BookMarks</i></br>

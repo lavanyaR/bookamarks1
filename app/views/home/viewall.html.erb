@@ -1,4 +1,6 @@
 <% @users.each do |user| %>
-<span>Name</span><%= link_to user.name %></br>
+<span>Name</span><%= link_to user.name, home_show_path(:id => user.id) %></br>
 <div>TotalBookMarks :	 <%= user.books.count  %></div>
 <% end %>
+</br>
+<div><i><%= link_to "back to home page",home_index_path %></i></div>

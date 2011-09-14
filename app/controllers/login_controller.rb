@@ -11,7 +11,7 @@ class LoginController < ApplicationController
 
     redirect_to users_path
    else
-    flash[:error] = "Failed to login"
+    flash[:error] = "Enter Proper Email And Password"
     redirect_to home_index_path
    end
   end

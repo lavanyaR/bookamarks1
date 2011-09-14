@@ -1,12 +1,19 @@
-<h1>Listing of BookMarks</h1>
+<div style="color:grey"><h1><i>All My BookMarks</i></h1></div></br>
 
 <table >
  
 
 <% @books.each do |book| %>
   <tr>
-    <td><h4>Title:</h4></td>
+    <td><span>Title:</span></td>
     <td><%= link_to book.title, book.url ,:target =>:_blank %></td></tr>
+   <td><span>Description:</span></td>
+    <td><%= link_to book.discription %></td></tr>
+   
+    <td><%= link_to 'Show', book %>
+    <%= link_to 'Edit', edit_book_path(book) %>
+    	<%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td></tr>
+  
 
 
 <% end %>
@@ -17,3 +24,4 @@
 <br />
 
 <%= link_to 'New Books', new_book_path %>
+<%= link_to "home page",users_path %>
