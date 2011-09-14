@@ -1,0 +1,3 @@
+#body { width: 950px; margin: 0 auto; }
+#body-left { float: left; margin-right: 10px; width: 470px; }
+#body-right { float: left; margin-right: 10px; margin-right: 0; width: 470px; } 

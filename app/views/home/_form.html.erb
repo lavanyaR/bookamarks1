@@ -1,0 +1,9 @@
+<div align="center"><%= form_for(:user,:url => {:controller => "login", :action => "create"}) do |f|%>
+<i style="color:green">Already A User  :</i>    
+<%= f.label :email %>
+  <%= f.text_field :email, :value => "" %>
+<%= f.label :Password  %>
+  <%= f.password_field :password, :value => "" %>
+  <%= f.submit "Login" %><br /></br />
+<% end %></div>
+

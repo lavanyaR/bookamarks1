@@ -1,0 +1,31 @@
+
+<%= render 'form' %>
+
+<div align="right">
+ <i style="font-size:20px">Do u Want To Register</i>
+
+ <%= link_to "Register Now", register_users_path %>
+ 
+</div></br></br>
+<div id='body'>
+  <div id='body-left' align="left">
+  <i style="font-size:30px">Latest BookMarks</i></br>
+<% @books.each do |books| %>
+<span>Title :</span><%= link_to books.title,books.url , :target=>:_blank %><br>
+
+<% end %>
+<%= will_paginate @bookmarks %>
+  </div>
+  <div id='body-right' align="right">
+<i style="font-size:30px">Users BookMarks</i></br>
+<% @users.each do |user| %>
+<span>Name  :<span><%= link_to user.name , home_show_path(:id => user.id) %></br>
+<div>TotalBookMarks :	 <%= user.books.count  %></div>
+<%end %>
+<%= form_tag("viewall", :method => :get) %>
+<%= submit_tag "viewall" %>
+</div>
+  
+</div> 
+
+

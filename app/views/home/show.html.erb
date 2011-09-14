@@ -1,0 +1,10 @@
+<b>Name : </b>
+<%= @user.name %><br />
+<b>Email : </b>
+<%= @user.email %><br />
+
+<b>Book:</b>
+<% @user.books.each do |b| %>
+<%= link_to b.title,b.url %>
+<% end %></br></br>
+<%= link_to 'Back', home_index_path %>

@@ -1,0 +1,41 @@
+<h1> Welcome To Your Profile</h1><div align="right"><%= link_to "logout",logout_login_index_path %></div></br></br></br>
+<div id='body'>
+  <div id='body-left' align="left">
+
+
+<%= @user.name %>
+
+<%= link_to "edit", edit_user_path(@user.id) %>
+<%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %></br>
+<% @books.each do |books| %>
+  <tr>
+    <td><span>Title :</span></td>
+    <td><%= link_to books.title,books.url ,:target=>:_blank%></td></tr></br>    
+    <td><span>Discription :</span></td>
+    <td><%=  books.discription %></td></tr></br>
+
+<tr>
+    <td><%= link_to 'Show', books %></td>
+    <td><%= link_to 'Edit', edit_book_path(books) %></td>
+    <td><%= link_to 'Destroy', books, :confirm => 'Are you sure?', :method => :delete %></td></tr></br>
+  </tr>
+<% end %>
+</table></br>
+
+
+<%= link_to 'New book', new_book_path %>
+</div>
+<div id='body-right' align="right">
+  <div style="color:lightblue"><i style="font-size:20px">Add A New Book Mark</i></div></br></br>
+   <div ><%= form_for(:book,:url => {:controller => "books", :action => "create"}) do |f| %>
+   <%= f.label :Title %>
+  <%= f.text_field :title %></br>
+  <%= f.label :Discription %>
+  <%= f.text_field :discription %></br>
+  <%= f.label :Url %>
+  <%= f.text_field :url %></br></br>
+  <%= f.submit "submit" %>
+<%end %>
+</div>
+
+
